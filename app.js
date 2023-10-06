@@ -1,51 +1,47 @@
-//JS code for ToDO App
-
-// Create an array named list to store our to-do activities
-
-var activityList = [];
-
-// Create a DOM variable  named input to get the to-do activities added from HTML form
+var activityList =  [];
 
 var input = document.getElementById("input");
 
-//Create a DOM variable todolist ul tag (unordered list)
+//Create an aaray named list to store our todo activities.
 
-var todo = document.getElementById("todolist");
+var todolist = document.getElementById("todolist");
 
-//Using onlclick to run the click function when button is clicked.
+//Create a DOM variable 
 
 document.getElementById("button").onclick = click;
+//Using onclick to run the click funtion when buttn is clicked
 
-// Adding a to-do activity
+//Adding a to-do activity
 
 function click() {
     activityList.push(input.value);
+    //usong push array operation to add the input todo activity to the list created earlier.
     console.log(activityList);
-    input.value  ="";
+    input.value = "";
+    //Giving empty string to input value after pushing it to array
     showList();
+    //calling a function to display the todo activities present in the list list 
 }
 
-// function -> showList()
 function showList(){
-    todo.innerHTML = " ";
-
-    activityList.forEach(function (n,i){
-        todo.innerHTML += "<li>" + n + "<a onclick = 'editItem("+i+")'> Edit </a>"+"<a onclick = 'deleteItem("+i+")'> &times | </a> </li>"
-    });
+    todolist.innerHTML = " ";
+    activityList.forEach(function (n,i)
+    {todolist.innerHTML += 
+        "<li>" + n + "<a onclick = 'editItem("+i+")'> Edit </a>"+"<a onclick = 'deleteItem("+i+")'> &times | </a> </li>"
+    });               
 }
 
 
-//Deleting an activity
 
-function deleteItem(i){
+function deleteItem(i)
+ {
     activityList.splice(i,1);
     showList();
-}
+ }
 
-//Editing an activity
 
-function editItem(i){
-    var newValue = prompt("Please insert your new value");
+ function editItem(i) {
+    var newValue = prompt("Please insert your new value ");
     activityList.splice(i,1,newValue);
     showList();
-}
+ }
